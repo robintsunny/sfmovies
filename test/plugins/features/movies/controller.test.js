@@ -6,13 +6,13 @@ describe('movie controller', () => {
 
   describe('create', () => {
 
-    it('creates a movie',  () => {
+    it('creates a movie', async () => {
       const payload = { title: 'WALL-E' };
+      
+      const movie = await Controller.create(payload)
 
-      return Controller.create(payload)
-      .then((movie) => {
-        expect(movie.get('title')).to.eql(payload.title);
-      });
+      expect(movie.get('title')).to.eql(payload.title);
+
     });
 
   });
